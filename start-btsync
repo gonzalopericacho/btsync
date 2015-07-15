@@ -2,15 +2,14 @@
 SECRET="${@}"
 : ${SECRET:=`btsync --generate-secret`}
 
-echo "Starting btsync with secret: $SECRET"
+echo "Starting btsync with the following secret key: $SECRET"
 
 echo "{
-    \"device_name\": \"Sync Server\",
-    \"listening_port\": 55555,
+    \"device_name\": \"Sync Container\",
+    \"listening_port\": 55555,          // 0 - randomize port
     \"storage_path\": \"/btsync/.sync\",
-    \"pid_file\": \"/var/run/btsync/btsync.pid\",
-    \"check_for_updates\": false,
-    \"use_upnp\": false,
+    \"check_for_updates\": false,       //Check for BTSync program updates
+    \"use_upnp\": false,                // use UPnP for port mapping
     \"download_limit\": 0,
     \"upload_limit\": 0,
     \"shared_folders\": [
