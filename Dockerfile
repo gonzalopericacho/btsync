@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER support@tutum.co
-RUN apt-get update && apt-get install -y curl
-RUN curl -o /usr/bin/btsync.tar.gz http://download-lb.utorrent.com/endpoint/btsync/os/linux-x64/track/stable
+RUN apt-get update && apt-get install -y python
+ADD http://download-lb.utorrent.com/endpoint/btsync/os/linux-x64/track/stable /usr/bin/btsync.tar.gz
 RUN cd /usr/bin && tar -xzvf btsync.tar.gz && rm btsync.tar.gz
 RUN mkdir -p /btsync/.sync
 EXPOSE 55555

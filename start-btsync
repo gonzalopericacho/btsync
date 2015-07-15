@@ -1,6 +1,5 @@
 #!/bin/bash
-SECRET="${@}"
-: ${SECRET:=`btsync --generate-secret`}
+SECRET=$(python -c "import base64; import os; import hashlib; print \"A\"+base64.b32encode(hashlib.sha224(os.getenv(\"TUTUM_SERVICE_API_URI\")).hexdigest())[:32]")
 
 echo "Starting btsync with the following secret key: $SECRET"
 
